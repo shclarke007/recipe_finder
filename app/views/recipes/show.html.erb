@@ -1,0 +1,26 @@
+<% if @recipe %>
+  <h1><%= @recipe.title %></h1>
+  <p> Prep time: <%= @recipe.prep_time %> </p>
+  <p> Cook time: <%= @recipe.cook_time %> </p>
+  <p> Ratings: <%= @recipe.ratings %> </p>
+  <p> Category: <%= @recipe.category %> </p>
+
+  <% if @recipe.image.present? %>
+    <%= image_tag @recipe.image, alt: @recipe.title, style: "max-width: 300px;" %>
+  <% end %>
+
+  <h2>Ingredients:</h2>
+  <ul>
+    <% @recipe.ingredients.split(',').each do |ingredient| %>
+        <li>
+        <%= ingredient %>
+        </li>
+    <% end %>
+  </ul>
+
+  <p> Author: <%= @recipe.author %> </p>
+
+  <%= link_to "Back to Search Results", search_recipes_path(ingredients: @ingredients, page: @page) %>
+<% else %>
+  <p class="error">Recipe not found.</p>
+<% end %>

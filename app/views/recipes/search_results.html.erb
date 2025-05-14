@@ -1,0 +1,24 @@
+
+<h1>Search Results</h1>
+<% if @pagy.count == 1 %>
+  <p>Found <%= @pagy.count %> recipe matching your ingredients:</p>
+<% else %>
+  <p>Found <%= @pagy.count %> recipes matching your ingredients:</p>
+<% end %>
+
+<%== pagy_nav(@pagy) %>
+
+<% if @recipes.present? %>  
+    <ul>
+      <% @recipes.each do |recipe| %>
+        <li>
+          <%= link_to recipe.title, recipe_path(recipe) %>
+        </li>
+      <% end %>
+    </ul>
+<% else %>
+<p>No recipes found matching your ingredients, or no ingredients were entered.</p>
+<% end %>
+
+<%= link_to "Back to Search", root_path %>
+
