@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Objective
+Deliver a prototype web application to answer the above problem statement.
 
-Things you may want to cover:
+✅ Must have's
+- A back-end with Ruby on Rails 1
+- A SQL-compliant relational database
+- A well-thought user experience
+  
+## Getting Started 
 
-* Ruby version
+### Ruby version  
+`3.0.6`
+### Rails version  
+`7.1.5.1`  
 
-* System dependencies
+### Local setup
 
-* Configuration
+```
+git clone git@github.com:shclarke007/Statement_App.git    
+cd recipe_finder_app  
+bundle install
+```
 
-* Database creation
+### Database creation    
+`rails db:create`  
 
-* Database initialization
+### Database initialization  
+`rails db:migrate`  
+`rake import:recipes`  
 
-* How to run the test suite
+ ### Start App
+ `rails s -p 3000`    
 
-* Services (job queues, cache servers, search engines, etc.)
+## User stories
 
-* Deployment instructions
+### User story 1
+As a user, I want to search for recipes by ingredients so that I can find recipes that use the ingredients I have.
 
-* ...
+### User story 2
+As a user, I want to see the recipe details so that I can learn more about the recipe.
+
+
