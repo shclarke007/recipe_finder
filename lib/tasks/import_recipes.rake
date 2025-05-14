@@ -31,7 +31,6 @@ namespace :import do
 
         Recipe.create!(
           title: title,
-          instructions: instructions,
           image: image,
           ingredients: ingredients_text,
           author: author,
