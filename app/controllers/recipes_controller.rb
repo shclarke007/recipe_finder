@@ -4,11 +4,8 @@ class RecipesController < ApplicationController
 
   def search
     @ingredients = search_params[:ingredients] 
-
     if @ingredients.present?
-      @search_results = Recipe.search_by_ingredients(@ingredients)
-
-      @pagy, @recipes = pagy(@search_results, items: 10)
+      set_search_results
       render :search_results
     else
       @recipes = [] 
@@ -18,12 +15,20 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+
+    @ingredients = params[:ingredients]
+    @page = params[:page]
   end
 
   private
 
   def search_params
     params.permit(:ingredients)
+  end
+
+  def set_search_results
+    @search_results = Recipe.search_by_ingredients(@ingredients)
+    @pagy, @recipes = pagy(@search_results, items: 10)
   end
   
 end
