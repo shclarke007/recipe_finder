@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
 
   def search
     @ingredients = search_params[:ingredients] 
+    
     if @ingredients.present?
       set_search_results
       render :search_results

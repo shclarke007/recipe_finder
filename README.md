@@ -11,7 +11,7 @@ Deliver a prototype web application to answer the above problem statement.
 ## Getting Started 
 
 ### Ruby version  
-`3.0.6`
+`3.1.0`
 ### Rails version  
 `7.1.5.1`  
 
@@ -20,8 +20,9 @@ Deliver a prototype web application to answer the above problem statement.
 ```
 git clone git@github.com:shclarke007/Statement_App.git    
 cd recipe_finder_app  
-bundle install
-```
+```  
+### Dependencies
+`bundle install`  
 
 ### Database creation    
 `rails db:create`  
