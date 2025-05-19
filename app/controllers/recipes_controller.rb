@@ -1,16 +1,22 @@
 
 class RecipesController < ApplicationController
-  def index; end
+  def index
+    @search = Search.new(search_params)
+    @categories = Recipe.all.distinct.pluck(:category).sort
+    @recipes = []
+  end
 
   def search
-    @ingredients = params[:ingredients]
+    @search = Search.new(search_params)
 
-    if @ingredients.present?
+    if @search.valid?
       set_search_results
+      render :search_results
     else
+      @error_message = "Please enter at least one search criteria."
       @recipes = [] 
+      render :index
     end
-    render :search_results
   end
 
   def show
@@ -23,8 +29,12 @@ class RecipesController < ApplicationController
   private
   
   def set_search_results
-    @search_results = Recipe.search_by_ingredients(@ingredients)
+    @search_results = @search.run_search
     @pagy, @recipes = pagy(@search_results, items: 10)
+  end
+
+  def search_params
+    params.fetch(:search, {}).permit(:ingredients, :category).to_h
   end
   
 end

@@ -20,7 +20,7 @@
 
   <p> Author: <%= @recipe.author %> </p>
 
-  <%= link_to "Back to Search Results", search_recipes_path(ingredients: @ingredients, page:@pagy) %>
+  <%= link_to "Back to Search Results", search_recipes_path(page:@page) %>
 
 <% else %>
   <p class="error">Recipe not found.</p>

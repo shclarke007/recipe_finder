@@ -1,10 +1,14 @@
-<h1>Find Recipes</h1>
-<p>Enter ingredients (comma-separated) to find recipes</p>
-
-<%= form_with url: search_recipes_path, method: :get, local: true do |form| %>
+<h1>Find Your  Recipes</h1>
+<%= form_with model: @search, url: search_recipes_path, method: :get, local: true do |form| %>
   <div class="field">
-    <%= form.label :ingredients, "Ingredients:" %>
-    <%= form.text_field :ingredients, id: :ingredients, size: 50 %>
+    <%= form.label :ingredients, "Ingredients (comma-separated):" %>
+    <%= form.text_field :ingredients, size: 50 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category, "Category:" %>
+    <%# You might want a select dropdown for categories if you have a predefined list %>
+    <%= form.select :category, options_for_select(@categories) %>
   </div>
 
   <div class="actions">

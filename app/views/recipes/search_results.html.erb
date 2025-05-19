@@ -1,4 +1,3 @@
-
 <h1>Search Results</h1>
 
 <% if @recipes.present? %>  
@@ -16,7 +15,8 @@
       <% end %>
     </ul>
 <% else %>
-<p>No recipes found matching your ingredients, or no ingredients were entered.</p>
+<p>No recipes found matching your ingredients or category search.</p>
+<p><%= @error_message %></p>
 <% end %>
 
 <%= link_to "Back to Search", root_path %>
