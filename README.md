@@ -37,9 +37,11 @@ cd recipe_finder_app
 ## User stories
 
 ### User story 1
-As a user, I want to search for recipes by ingredients so that I can find recipes that use the ingredients I have.
+As a user, I want to search for recipes by ingredients and category  
+so that I can find recipes that use the ingredients I have.
 
 ### User story 2
-As a user, I want to see the recipe details so that I can learn more about the recipe.
+As a user, I want to see the recipe details  
+so that I can learn more about the recipe.
 
 
