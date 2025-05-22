@@ -1,27 +1,33 @@
-<% if @recipe %>
-  <h1><%= @recipe.title %></h1>
-  <p> Prep time: <%= @recipe.prep_time %> mins </p>
-  <p> Cook time: <%= @recipe.cook_time %> mins </p>
-  <p> Ratings: <%= @recipe.ratings %> </p>
-  <p> Category: <%= @recipe.category %> </p>
+<div class="container flex flex-col items-center justify-start border-2 border-gray-300 rounded-lg p-4">
+  <% if @recipe %>
+    <h1 class="text-2xl font-bold mb-2"><%= @recipe.title %></h1>
 
-  <% if @recipe.image.present? %>
-    <%= image_tag @recipe.image, alt: @recipe.title, style: "max-width: 300px;" %>
-  <% end %>
-
-  <h2>Ingredients:</h2>
-  <ul>
-    <% @recipe.ingredients.split(',').each do |ingredient| %>
-        <li>
-        <%= ingredient %>
-        </li>
+    <% if @recipe.image.present? %>
+      <%= image_tag @recipe.image, alt: @recipe.title, style: "max-width: 300px;" %>
     <% end %>
-  </ul>
 
-  <p> Author: <%= @recipe.author %> </p>
+    <p class="text-gray-700 text-base"> Cook time: <%= @recipe.cook_time %> mins </p>
+    <p class="text-gray-700 text-base"> Prep time: <%= @recipe.prep_time %> mins </p>
+    <p class="text-gray-700 text-base"> Ratings: <%= @recipe.ratings %> </p>
+    <p class="text-gray-700 text-base"> Category: <%= @recipe.category %> </p>
 
-  <%= link_to "Back to Search Results", search_recipes_path(page:@page) %>
+    <h2 class="text-xl font-bold mb-2">Ingredients:</h2>
+    <ul>
+      <% @recipe.ingredients.split(',').each do |ingredient| %>
+          <li>
+          <%= ingredient %>
+          </li>
+      <% end %>
+    </ul>
 
-<% else %>
-  <p class="error">Recipe not found.</p>
-<% end %>
+    <p class="text-gray-700 text-base mb-3 text-start"> Author: <%= @recipe.author %> </p>
+    <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-8">
+      <%= link_to "Back to Search Results", search_recipes_path(page:@page) %>
+    </button>
+  <% else %>
+    <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+      <p class="font-bold">Not Found</p>
+      <p class="text-sm">Recipe not found.</p>
+    </div>
+  <% end %>
+</div>

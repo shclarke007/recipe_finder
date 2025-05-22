@@ -1,23 +1,38 @@
-<h1>Search Results</h1>
+<div class="container flex flex-col items-center justify-center border-2 border-gray-300 rounded-lg p-4">
+  <h1 class="text-3xl font-bold mb-5">Search Results</h1>
 
-<% if @recipes.present? %>  
-  <% if @pagy.count == 1 %>
-    <p>Found <%= @pagy.count %> recipe matching your ingredients:</p>
-  <% else %>
-    <p>Found <%= @pagy.count %> recipes matching your ingredients:</p>
+  <% if @recipes.present? %>  
+    <% if @pagy.count == 1 %>
+      <p class= "text-gray-700 text-base mb-3"> Found <span class="font-bold"><%= @pagy.count %></span> recipe matching your search: </p>
+    <% else %>
+      <p class= "text-gray-700 text-base mb-3"> Found <span class="font-bold"><%= @pagy.count %></span> recipes matching your search: </p>
   <% end %>
   <%== pagy_nav(@pagy) %>
+  <div class="mt-8 sm:w-sm md:w-md lg:w-xl">
     <ul>
       <% @recipes.each do |recipe| %>
-        <li>
-          <%= link_to recipe.title, recipe_path(recipe) %>
-        </li>
+      <li class="text-slate-800 flex w-full items-center rounded-md p-2 pl-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 mx-2"> 
+        <svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 32 32" xml:space="preserve"><style type="text/css">.afiado_een{fill:#0B1719;} </style>
+        <path class="afiado_een" d="M22.314,16l-8.485,8.485L11,21.657L16.657,16L11,10.343l2.828-2.828L22.314,16z"/>
+        </svg>
+
+        <%= link_to recipe.title, recipe_path(recipe) %>
+        
+        <div class="ml-auto grid place-items-center justify-self-end"> 
+          <%= recipe.ratings %>
+        </div>
+      </li>
       <% end %>
-    </ul>
-<% else %>
-<p>No recipes found matching your ingredients or category search.</p>
-<p><%= @error_message %></p>
-<% end %>
+      </ul>
+    </div>
+  <% else %>
+    <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+      <p class="font-bold">Oops!</p>
+      <p class="text-sm">No recipes found matching your search.</p>
+    </div>
+  <% end %>
 
-<%= link_to "Back to Search", root_path %>
-
+  <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-8">
+    <%= link_to "Back to Search", root_path %>
+  </button>
+</div>
